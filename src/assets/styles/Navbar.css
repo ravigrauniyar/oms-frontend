@@ -37,8 +37,14 @@ a:hover, .profile-icon:hover, .search-icon:hover {
 }
 
 /* Trademark and Contact */
-.nav-brand-trademark, .nav-brand-contact {
-    width: 45%;
+.nav-brand-trademark{
+    position: absolute;
+    left: 3vw;
+}
+.nav-brand-contact {
+    position: absolute;
+    right: 2vw;
+    width: 40%;
 }
 
 .nav-brand-trademark { 
