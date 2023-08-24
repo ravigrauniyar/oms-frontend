@@ -1,0 +1,85 @@
+/* Container for access form */
+.access-form-container {
+    position: absolute;
+    top: 25vh;
+    flex-direction: column;
+    padding: 1rem;
+    padding-right: 1.25rem;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(255,255,255,0.1));
+    color: white;
+    width: 225px;
+    border-radius: 0.5rem;
+}
+
+/* Header for access form */
+.access-form-header {
+    width: 100%;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: left !important;
+}
+
+/* Body of access form */
+.access-form-body {
+    font-size: 20px;
+    margin-top: 0.5rem;
+}
+
+/* Form group */
+.form-group {
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+}
+
+/* Form control */
+.form-control {
+    width: 100%;
+    margin: 0.5rem 0;
+    font-size: 16px;
+    padding: 0.25rem 0 0.25rem 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: #fbf9d3 !important;
+}
+
+/* Autofill transition */
+input:-webkit-autofill {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Button for access form */
+.access-form-button {
+    background-color: #fbf9d3;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 0.5rem 1rem;
+    width: 50%;
+    font-size: 16px;
+    margin-top: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect on button */
+.access-form-button:hover {
+    background-color: black;
+    color: #fbf9d3;
+}
+
+/* Error messages for access form */
+.access-form-errors {
+    width: 100%;
+    padding: 0.25rem;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.5), #fbf9d3);
+    color: red;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* Hidden element */
+.hidden-element {
+    display: none;
+}

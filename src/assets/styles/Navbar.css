@@ -1,0 +1,149 @@
+/* Navbar Styles */
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(255,255,255,0.1));
+}
+
+/* Brand Info */
+.nav-brand-info {
+    height: 15vh;
+    justify-content: space-around !important;
+}
+
+/* Brand Title */
+.nav-brand-title {
+    color: white;
+    margin-left: 10px;
+    font-size: 36px;
+}
+
+/* Links and Icons */
+a{
+    font-size: 20px;
+}
+a, .search-icon {
+    color: #F2F2F2;
+    text-decoration: none;
+}
+.icons-container, .phone-icon, .search-icon, .profile-icon{
+    font-size: 20px;
+}
+
+a:hover, .profile-icon:hover, .search-icon:hover {
+    color: black;
+}
+
+/* Trademark and Contact */
+.nav-brand-trademark{
+    position: absolute;
+    left: 3vw;
+}
+.nav-brand-contact {
+    position: absolute;
+    right: 2vw;
+    width: 40%;
+}
+
+.nav-brand-trademark { 
+    justify-content: start !important; 
+}
+
+.nav-brand-contact {
+    justify-content: end !important;
+    color: #F2F2F2;
+    font-size: 20px;
+}
+
+/* Trademark Image */
+.nav-brand-trademark img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+/* Navbar Links */
+.navbar-links a {
+    padding: 1vh 2vw;
+    border-right: 0.1rem solid #F2F2F2;
+}
+
+.navbar-links a:hover {
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(255,255,255,0.1));
+}
+
+.navbar-links a:last-child {
+    border: none;
+}
+
+/* Navbar Navigation */
+.navbar-nav {
+    height: 7vh;
+    font-weight: 600;
+}
+
+/* Links Container */
+.navbar-links {
+    position: absolute;
+    left: 2vw;
+}
+
+/* Profile and Search */
+.navbar-profile {
+    position: absolute;
+    display: flex;
+    right: 2vw;
+    align-items: center;
+}
+
+/* Search Box */
+.search-box {
+    height: 4vh;
+    width: 20vw;
+    margin-right: 0.5rem;
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 2rem;
+    border: none;
+    padding: 0.5vh 2vw;
+    font-size: 2.75vh;
+    outline: 0;
+}
+
+/* Search Icon */
+.search-icon {
+    margin-right: 2vw;
+    cursor: pointer;
+}
+
+/* Profile Icon */
+.profile-icon { 
+    margin-top: 0.25rem; 
+}
+
+/* Contact Info */
+.nav-brand-contact h4 {
+    margin: 0 0 0.5rem;
+}
+
+.nav-brand-phone, .nav-brand-socials {
+    text-align: right;
+}
+
+/* Social Icons */
+.nav-brand-socials { 
+    width: 30%; 
+}
+
+.phone-icon { 
+    margin-left: 0.5rem; 
+}
+
+/* Icons Container */
+.icons-container {
+    width: 60%;
+    float: right;
+    display: flex;
+    justify-content: space-between;
+}
