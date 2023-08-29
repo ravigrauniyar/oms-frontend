@@ -8,9 +8,11 @@ class AccessRequestHandler
     {
         try
         {
-            const apiEndpoint = 'http://localhost:5045/api/login'
+            const apiEndpoint = 'login'
+            const params = new Map<string, string>()
+            
             const response = await ApiService.postRequest<T>(
-                apiEndpoint, requestBody
+                apiEndpoint, requestBody, params
             )
             return response
         }

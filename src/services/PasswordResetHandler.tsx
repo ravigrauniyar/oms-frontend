@@ -7,10 +7,11 @@ class PasswordResetHandler{
     {
         try
         {
-            const apiEndpoint = 'http://localhost:5045/api/reset-password'
+            const apiEndpoint = 'reset-password'
+            const params = new Map<string, string>()
 
             const response = await ApiService.putRequest<T>(
-                apiEndpoint, requestBody, token
+                apiEndpoint, requestBody, token, params
             )
             return response
         }
