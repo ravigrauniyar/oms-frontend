@@ -1,4 +1,4 @@
-import BaseUrlMapper from "./BaseUrlBuilder"
+import BaseUrlBuilder from "./BaseUrlBuilder"
 
 class ApiService 
 {
@@ -7,7 +7,7 @@ class ApiService
   {
     try
     {
-      const url = BaseUrlMapper.buildUrl(endpoint, params)
+      const url = BaseUrlBuilder.buildUrl(endpoint, params)
 
       const response = await fetch(url, {
           method: 'POST',
@@ -30,7 +30,7 @@ class ApiService
   Promise<T> 
   {
     try{
-      const url = BaseUrlMapper.buildUrl(endpoint, params)
+      const url = BaseUrlBuilder.buildUrl(endpoint, params)
 
       const response = await fetch(url, 
           {

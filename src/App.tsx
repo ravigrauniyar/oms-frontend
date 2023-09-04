@@ -4,6 +4,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import Home from './pages/Home'
 import './assets/styles/custom-styles.css'
 import PasswordReset from './pages/PasswordReset'
+import Access from './pages/Access'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     >
       <Routes>
         <Route path='/' element={ <Home /> } />
+        <Route path='/access' element={ <Access /> } />
         <Route path='/reset-password' element={ <PasswordReset /> } />
         <Route path='*' element={ <Navigate to='/' /> } />
       </Routes>

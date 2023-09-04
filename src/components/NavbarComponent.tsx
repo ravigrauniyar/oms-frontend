@@ -2,7 +2,7 @@ import { Container, Nav, Navbar } from "react-bootstrap"
 import { FaInstagram, FaFacebook, FaTwitter, FaUserAlt } from "react-icons/fa"
 
 function NavbarComponent() 
-{
+{  
   return (
     // Navigation
     <Navbar expand="lg" className="navbar-container w-100">
@@ -33,7 +33,7 @@ function NavbarComponent()
               <Nav.Link href="/"><FaInstagram /></Nav.Link>
               <Nav.Link href="/"><FaTwitter /></Nav.Link>
               <Nav.Link href="/"><FaFacebook /></Nav.Link>
-              <Nav.Link href="/"><FaUserAlt /></Nav.Link>
+              <Nav.Link href="/access"><FaUserAlt /></Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

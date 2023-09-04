@@ -1,18 +1,34 @@
 import { Button, Col, Form, Row } from "react-bootstrap"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ApiResponse } from "../models/ApiResponse"
 import { PasswordResetRequest } from "../models/PasswordResetRequest"
 import PasswordResetHandler from "../services/PasswordResetHandler"
-import ClaimHandler from "../services/ClaimHandler"
+import Cookies from "js-cookie"
+import { Link, useNavigate } from "react-router-dom"
+import { PersonView } from "../models/PersonView"
 
 function PasswordResetForm() 
 {
     // Initialize states for password reset
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const [resetError, setResetError] = useState('')
+    const [resetMessage, setResetMessage] = useState('')
     const [resetSuccess, setResetSuccess] = useState(false)
+    const [logsOut, setLogsOut] = useState(false)
+    const navigate = useNavigate()
 
+    useEffect(()=>{
+        if(logsOut)
+        {
+            navigate('/access')
+        }
+    },[logsOut])
+
+    const handleLogoutRequest = () => 
+    {
+        Cookies.remove('user')
+        setLogsOut(true)
+    }
     // Method triggered when Submit button is clicked
     const handlePasswordReset = async () => 
     {
@@ -23,25 +39,32 @@ function PasswordResetForm()
                 newPassword: newPassword,
                 confirmPassword: confirmPassword
             }
-
             // Access token from session
-            const token = sessionStorage.getItem('token')!
+            const user = JSON.parse(Cookies.get('user')!)
+
             // Access user's email using Claim handler
-            const email: string = ClaimHandler.getUser(token).email
+            const email: string = user.email
 
             // Use PasswordResetHandler to make API call for password reset
-            var response = await PasswordResetHandler.handlePasswordReset<ApiResponse<string>>(requestBody, email)
+            var response = await PasswordResetHandler
+                                .handlePasswordReset<ApiResponse<PersonView>>(requestBody, email)
 
             // Alter states based on response
-            setResetSuccess(response.isSuccess)
-            setResetError(response.message)
+            setResetMessage(response.message)
+            if(response.isSuccess)
+            {
+                const userString = JSON.stringify(response.value)
+                Cookies.set('user', userString)
+                setResetSuccess(!response.value.requiresPasswordReset)
+            }
         } 
         catch (error) {
-            setResetError('Password reset failed!')
+            setResetMessage('Password reset failed!')
         }
     }
     // Show form if password not reset
-    if(!resetSuccess){
+    if(Cookies.get('user') !== undefined && !resetSuccess)
+    {
         return (
             <Form>
                 <Row className='text-center title-text'>
@@ -58,20 +81,30 @@ function PasswordResetForm()
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control type="password" onChange={(e) => setConfirmPassword(e.target.value)}/>
                 </Form.Group>
-
-                <Button className="w-100" variant="dark" onClick={handlePasswordReset}>
-                    Submit
-                </Button>
+                <Row className="justify-content-around">
+                    <Button className="col-5 w-40" variant="dark" onClick={handlePasswordReset}>
+                        Submit
+                    </Button>
+                    <Button className="col-5 w-40" variant="dark" onClick={handleLogoutRequest}>
+                        Logout
+                    </Button>
+                </Row>
                 {
-                    <span className="text-danger small">{resetError}</span>
+                    <span className="text-danger small">{resetMessage}</span>
                 }
             </Form>
         )
     }
     // Show success message if password reset was successful
-    else{
+    else if(Cookies.get('user') !== undefined && resetSuccess){
         return(
-            <p className="text-success">Password reset successful!</p>
+            <>
+                <p className="text-success">Password reset successful!</p>
+                
+                <Link to={'/dashboard'}>
+                    Go to Dashboard
+                </Link>
+            </>
         )
     }
 }

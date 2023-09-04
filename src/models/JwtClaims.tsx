@@ -1,5 +1,10 @@
 // Model used to retrieve 'User' claim
 export interface JwtClaims
 {
-    User: string
+    aud: string,
+    User: string,
+    iat: string,
+    jti: string,
+    iss: string,
+    exp: Number
 }

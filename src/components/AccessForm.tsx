@@ -1,19 +1,20 @@
 import { Button, Col, Form, Row } from "react-bootstrap"
-import { useState } from "react"
-import AccessRequestHandler from "../services/AccessRequestHandler"
+import { useState, useEffect } from "react"
 import { AccessRequest } from "../models/AccessRequest"
 import { useNavigate } from "react-router-dom"
 import { ApiResponse } from "../models/ApiResponse"
+import AccessRequestHandler from "../services/AccessRequestHandler"
 import ClaimHandler from "../services/ClaimHandler"
+import Cookies from "js-cookie"
+import { PersonView } from "../models/PersonView"
 
-function AccessForm() 
+const AccessForm = () => 
 {
     // Initialize states for event handling
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [token, setToken] = useState('')
-    const [error, setError] = useState('')
-    const [loginSuccess, setLoginSuccess] = useState(false)
+    const [message, setMessage] = useState('')
+    const [isLoggedIn, setIsLoggedIn] = useState(Cookies.get('user') !== undefined)
     const navigate = useNavigate()
 
     // Initialize the body for post request for login
@@ -21,6 +22,28 @@ function AccessForm()
         deviceToken: "string",
         email: email,
         password: password
+    }
+    useEffect(()=>
+    {
+        if(isLoggedIn)
+        {
+            const user : PersonView = JSON.parse(Cookies.get('user')!)
+            // Redirect to PasswordReset page if first time login
+            if(user.requiresPasswordReset)
+            {
+                navigate('/reset-password')
+            }
+            else
+            {
+                navigate('/access')
+            }
+        }
+    }, [isLoggedIn])
+
+    const handleLogoutRequest = () => 
+    {
+        Cookies.remove('user')
+        setIsLoggedIn(false)
     }
     // Method triggered when Sign in button is clicked
     const handleAccessRequest = async () => {
@@ -30,22 +53,23 @@ function AccessForm()
             const response = await AccessRequestHandler.handleLogin<ApiResponse<string>>(requestBody)
             
             // Alter states based on response
-            setLoginSuccess(response.isSuccess)
-            setError(response.message)
+            setMessage(response.message)
 
             if(response.isSuccess)
             {
-                setToken(response.value)
+                const expiryTime = ClaimHandler.getExpireTime(response.value)!
+                const user : PersonView = ClaimHandler.getUser(response.value)
+                Cookies.set('user', JSON.stringify(user), expiryTime)
+                setIsLoggedIn(true)
             }
         }
         // Handle exceptions
         catch(error) {
-            setLoginSuccess(false)
-            setError("Access request error!")
+            setMessage("Access request message!")
         }
     }
     // Show access form when not logged in
-    if(!loginSuccess)
+    if(!isLoggedIn)
     {
         return (
             <Form>
@@ -70,34 +94,22 @@ function AccessForm()
                     Sign In
                 </Button>
                 {
-                    error && <span className="text-danger fs-6">{error}</span>
+                    message && <span className="text-danger fs-6">{message}</span>
                 }
             </Form>
         )
     }
     // Redirect if token is valid
-    else if( loginSuccess && token !== '' )
-    {
-        // Access token from session
-        sessionStorage.setItem('token', token)
-        // Access User's information using ClaimHandler
-        const user = ClaimHandler.getUser(token)
-
-        // Redirect to PasswordReset page if first time login
-        if(user.requiresPasswordReset)
-        {
-            navigate('/reset-password')
-        }
-        // Show welcome message if user is logged in
-        else
-        {
-            return <p className="text-success">Welcome {user.firstName + ' ' + user.lastName} </p>
-        }
-    }
-    // Handle expired session
     else
     {
-        return <p className="text-danger"> Session ended! </p>
+        return( 
+            <>
+                <p className="text-success">You're logged in!</p>
+                <Button className="w-100" variant="dark" onClick={handleLogoutRequest}>
+                    Log out
+                </Button>
+            </>
+        )
     }
 }
 export default AccessForm
