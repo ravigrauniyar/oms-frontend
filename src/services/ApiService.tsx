@@ -2,6 +2,27 @@ import BaseUrlBuilder from "./BaseUrlBuilder"
 
 class ApiService 
 {
+  // Accept api endpoint and body parameters to make a GET request
+  static async getRequest<T>(endpoint: string, token: string, params: Map<string, string>): Promise<T> 
+  {
+    try
+    {
+      const url = BaseUrlBuilder.buildUrl(endpoint, params)
+
+      const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Authorization': 'Bearer ' + token
+          }
+        }
+      )
+      return await response.json()
+    }
+    catch(error)
+    {
+      throw new Error("Api Service Error!")
+    }
+  }
   // Accept api endpoint and body parameters to make a POST request
   static async postRequest<T>(endpoint: string, requestBody: any, params: Map<string, string>): Promise<T> 
   {
@@ -14,7 +35,7 @@ class ApiService
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(requestBody),
+          body: JSON.stringify(requestBody)
         }
       )
       return await response.json()

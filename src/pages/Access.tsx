@@ -1,16 +1,16 @@
-import Layout from './Layout'
 import { Col, Row } from 'react-bootstrap'
-import AccessForm from '../components/AccessForm'
+import AccessForm from '../components/Forms/AccessForm'
+import GeneralLayout from '../components/Layouts/GeneralLayout'
 
 function Access() {
   return (
-    <Layout>
+    <GeneralLayout>
         <Row>
             <Col className='form-container mx-auto'>
                 <AccessForm />
             </Col>
         </Row>        
-    </Layout>
+    </GeneralLayout>
   )
 }
 

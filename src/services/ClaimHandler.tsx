@@ -1,6 +1,6 @@
 import jwtDecode from "jwt-decode";
 import { JwtClaims } from "../models/JwtClaims";
-import { PersonView } from "../models/PersonView";
+import { PersonView } from "../models/Views/PersonView";
 
 class ClaimHandler
 {

@@ -1,5 +1,5 @@
 import ApiService from "./ApiService"
-import { AccessRequest } from "../models/AccessRequest"
+import { AccessRequest } from "../models/Requests/AccessRequest"
 
 class AccessRequestHandler
 {

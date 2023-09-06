@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar } from "react-bootstrap"
 import { FaInstagram, FaFacebook, FaTwitter, FaUserAlt } from "react-icons/fa"
 
-function NavbarComponent() 
+function GeneralNavbar() 
 {  
   return (
     // Navigation
@@ -41,4 +41,4 @@ function NavbarComponent()
   )
 }
 
-export default NavbarComponent
+export default GeneralNavbar

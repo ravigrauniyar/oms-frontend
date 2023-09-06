@@ -1,12 +1,13 @@
+
 import { Button, Col, Form, Row } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import { AccessRequest } from "../models/AccessRequest"
-import { useNavigate } from "react-router-dom"
-import { ApiResponse } from "../models/ApiResponse"
-import AccessRequestHandler from "../services/AccessRequestHandler"
-import ClaimHandler from "../services/ClaimHandler"
+import { AccessRequest } from "../../models/AccessRequest"
+import { Link, useNavigate } from "react-router-dom"
+import { ApiResponse } from "../../models/ApiResponse"
+import AccessRequestHandler from "../../services/AccessRequestHandler"
+import ClaimHandler from "../../services/ClaimHandler"
 import Cookies from "js-cookie"
-import { PersonView } from "../models/PersonView"
+import { PersonView } from "../../models/PersonView"
 
 const AccessForm = () => 
 {
@@ -103,12 +104,13 @@ const AccessForm = () =>
     else
     {
         return( 
-            <>
-                <p className="text-success">You're logged in!</p>
+            <Row>
+                <p className="text-success">You're logged in! <Link to={'/dashboard'}><br/> Go to Dashboard</Link></p>
+                
                 <Button className="w-100" variant="dark" onClick={handleLogoutRequest}>
                     Log out
                 </Button>
-            </>
+            </Row>
         )
     }
 }

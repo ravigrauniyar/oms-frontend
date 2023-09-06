@@ -1,8 +1,8 @@
 import { Col, Container, Row } from 'react-bootstrap'
-import Layout from './Layout'
 import Cookies from "js-cookie"
 import { useEffect, useState } from 'react'
-import { PersonView } from '../models/PersonView'
+import { PersonView } from '../models/Views/PersonView'
+import GeneralLayout from '../components/Layouts/GeneralLayout'
 
 // Landing page
 function Home() 
@@ -19,7 +19,7 @@ function Home()
   }, [])
 
   return (
-    <Layout>
+    <GeneralLayout>
         <Row>
             <Col className='form-container mx-auto'>
                 <Container className='h4'>Welcome to OMS
@@ -27,7 +27,7 @@ function Home()
                 !</Container>
             </Col>
         </Row>        
-    </Layout>
+    </GeneralLayout>
   )
 }
 
