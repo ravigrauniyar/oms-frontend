@@ -10,7 +10,7 @@ export interface AppointmentView
     isApproved: boolean,
     isCompleted: boolean,
     isWaiting: boolean,
-    patient: PersonView,
+    out_patient: PersonView,
     doctor: PersonView,
     service: AppointmentServiceView
 }

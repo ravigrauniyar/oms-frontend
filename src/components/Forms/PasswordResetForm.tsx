@@ -3,10 +3,10 @@ import { Button, Col, Form, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import Cookies from "js-cookie"
-import { PasswordResetRequest } from "../../models/PasswordResetRequest"
-import { ApiResponse } from "../../models/ApiResponse"
+import { PasswordResetRequest } from "../../models/Requests/PasswordResetRequest"
+import { ApiResponse } from "../../models/Responses/ApiResponse"
 import PasswordResetHandler from "../../services/PasswordResetHandler"
-import { PersonView } from "../../models/PersonView"
+import { PersonView } from "../../models/Views/PersonView"
 
 function PasswordResetForm() 
 {

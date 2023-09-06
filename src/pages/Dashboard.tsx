@@ -1,4 +1,4 @@
-import { Container, Row, Stack } from "react-bootstrap"
+import { Col, Row, Stack } from "react-bootstrap"
 import DashboardLayout from "../components/Layouts/DashboardLayout"
 import { useEffect, useState } from "react"
 import Cookies from 'js-cookie'
@@ -7,6 +7,8 @@ import GreetingCard from "../components/cards/GreetingCard"
 import MetricsCard from "../components/cards/MetricsCard"
 import { FaFileMedical, FaList, FaUser, FaUserMd } from "react-icons/fa"
 import MetricsCountHandler from "../services/MetricsCountHandler"
+import DateTimeDisplay from "../components/DateTimeDisplay"
+import AppointmentsTable from "../components/AppointmentsTable"
 
 function Dashboard() {
   const [username, setUsername] = useState('')
@@ -38,14 +40,15 @@ function Dashboard() {
 
   }, [])
 
-
   return (
     <DashboardLayout>
-      <Container>
-        <Row className="flex-column">
+      <Row className="dashboard-content mx-4 justify-content-around">
+        <Col md="5">
           <Stack gap={5}>
-            <GreetingCard username={username} />
-            <Row className="col-6 d-flex justify-content-between">
+            <Row className="greeting-card">
+              <GreetingCard username={username} />
+            </Row>
+            <Row className="d-flex justify-content-between">
               <MetricsCard
                 icon= {<FaUser />}
                 title="Total Patients"
@@ -68,8 +71,14 @@ function Dashboard() {
               />
             </Row>
           </Stack>
-        </Row>
-      </Container>
+        </Col>
+        <Col className="col-6 pt-2">
+          <Stack gap={5}>
+            <DateTimeDisplay />
+            <AppointmentsTable />
+          </Stack>
+        </Col>
+      </Row>
     </DashboardLayout>
   )
 }

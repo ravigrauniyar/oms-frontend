@@ -74,6 +74,10 @@ body, input, button
 }
 
 /* Dashboard */
+.dashboard-content{
+    position: absolute;
+    top: 20vh;
+}
 .greeting-card{
     background-color: #fff;
     padding: 1rem;
@@ -98,4 +102,29 @@ body, input, button
 }
 .metrics-title{
     font-size: 0.75em;
+}
+
+/* Date Time Display */
+.date-time-table th{
+    background-color: rgb(96,91,255);
+    color: #E1E0FF;
+}
+.date-time-table td{
+    background-color: transparent;
+}
+
+/* Appointments Table */
+.appointments-table{
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+.appointments-table th{
+    padding: 0.5rem 0;
+    font-size: 1em;
+}
+.appointments-table td{
+    padding: 0.5rem 0;
+}
+.more-appointments{
+    color:rgb(96,91,255);
 }
