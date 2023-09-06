@@ -1,0 +1,71 @@
+body, input, button
+{
+    font-size: calc(10px - 0.25vw + 1.75vh) !important;
+    color: black !important;
+}
+.form-vertical-margin{
+    margin: calc(10px - 0.25vw + 1.75vh) 0;
+}
+.title-text
+{
+    font-size: 1.5em;
+}
+.logo{
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.25em;
+}
+.flex-center
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.letter-spacing
+{
+    letter-spacing: 5px;
+}
+/* Landing page */
+.app-landing-page
+{
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+}
+/* Navbar */
+.navbar-container
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, rgba(250,250,210,0.5), rgba(255,255,255,0.5));
+}
+.navbar-toggler
+{
+    border: none;    
+}
+.navbar-toggler:focus{
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+}
+/* Access form */
+.form-container
+{
+    max-width: 40vh;
+    padding: calc(10px - 0.25vw + 1.75vh);
+    background-image: linear-gradient(to bottom, rgba(250,250,210,0.5), rgba(255,255,255,0.5));
+}
+.form-control, .form-control:focus
+{
+    background-color: rgba(250,250,210, 0.5);
+    padding: 0 0.75rem;
+    outline: none;
+    box-shadow: none;
+}
+.form-control:-webkit-autofill 
+{
+    transition: background-color 5000s ease-in-out 0s;
+}
+.btn-dark{
+    color: rgb(250,250,210) !important;
+}
