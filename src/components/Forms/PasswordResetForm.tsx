@@ -1,11 +1,12 @@
+
 import { Button, Col, Form, Row } from "react-bootstrap"
 import { useEffect, useState } from "react"
-import { ApiResponse } from "../models/ApiResponse"
-import { PasswordResetRequest } from "../models/PasswordResetRequest"
-import PasswordResetHandler from "../services/PasswordResetHandler"
-import Cookies from "js-cookie"
 import { Link, useNavigate } from "react-router-dom"
-import { PersonView } from "../models/PersonView"
+import Cookies from "js-cookie"
+import { PasswordResetRequest } from "../../models/Requests/PasswordResetRequest"
+import { ApiResponse } from "../../models/Responses/ApiResponse"
+import PasswordResetHandler from "../../services/PasswordResetHandler"
+import { PersonView } from "../../models/Views/PersonView"
 
 function PasswordResetForm() 
 {

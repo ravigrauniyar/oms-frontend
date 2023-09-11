@@ -31,8 +31,7 @@ class BaseUrlBuilder
             queryParams.append(key, value)
         })
         // Appending base URL, requested endpoint and query parameters
-        const fullUrl = `${baseUrl}${endpoint}
-                            ${queryParams.toString() ? `?${queryParams.toString()}` : ''}`
+        const fullUrl = `${baseUrl}${endpoint}${queryParams.toString() ? `?${queryParams.toString()}` : ''}`
         return fullUrl
     }
 }

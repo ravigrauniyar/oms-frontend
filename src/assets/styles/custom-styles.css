@@ -31,13 +31,16 @@ body, input, button
     background-image: url('../images/background.jpg');
     background-size: cover;
 }
+.dashboard-landing-page{
+    background-color: #E1E0FF;
+}
 /* Navbar */
 .navbar-container
 {
     position: fixed;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to bottom, rgba(250,250,210,0.5), rgba(255,255,255,0.5));
+    background-image: linear-gradient(to bottom, rgba(225,224,255,0), rgba(255,255,255,1));
 }
 .navbar-toggler
 {
@@ -53,11 +56,11 @@ body, input, button
 {
     max-width: 40vh;
     padding: calc(10px - 0.25vw + 1.75vh);
-    background-image: linear-gradient(to bottom, rgba(250,250,210,0.5), rgba(255,255,255,0.5));
+    background-image: linear-gradient(to bottom, rgba(225,224,255,0.5), rgba(255,255,255,0.5));
 }
 .form-control, .form-control:focus
 {
-    background-color: rgba(250,250,210, 0.5);
+    background-color: rgba(225,224,255);
     padding: 0 0.75rem;
     outline: none;
     box-shadow: none;
@@ -68,4 +71,60 @@ body, input, button
 }
 .btn-dark{
     color: rgb(250,250,210) !important;
+}
+
+/* Dashboard */
+.dashboard-content{
+    position: absolute;
+    top: 20vh;
+}
+.greeting-card{
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.dashboard-username{
+    color: rgb(96,91,255);
+}
+.metrics-card{
+    max-width: fit-content;
+    background-color: #fff;
+    border-radius: 1rem;
+}
+.metrics-btn{
+    background-color: rgb(96,91,255);
+    color: #E1E0FF !important;
+    border-radius: 1rem;
+    cursor: default !important;
+}
+.metrics-btn:hover{
+    background-color: rgb(96,91,255);
+}
+.metrics-title{
+    font-size: 0.75em;
+}
+
+/* Date Time Display */
+.date-time-table th{
+    background-color: rgb(96,91,255);
+    color: #E1E0FF;
+}
+.date-time-table td{
+    background-color: transparent;
+}
+
+/* Appointments Table */
+.appointments-table{
+    background-color: #fff;
+    border-radius: 0.5rem;
+}
+.appointments-table th{
+    padding: 0.5rem 0;
+    font-size: 1em;
+}
+.appointments-table td{
+    padding: 0.5rem 0;
+}
+.more-appointments{
+    color:rgb(96,91,255);
 }
